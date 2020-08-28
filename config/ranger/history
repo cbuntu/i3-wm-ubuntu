@@ -1,0 +1,11 @@
+rename 1.磁盘管理.mp4
+rename 2.FTP服务器的搭建和配置.mp4
+rename 3.虚拟机安装和WindosServer2008网络操作系统的安装及设置.mp4
+rename 1.虚拟机安装和WindosServer2008网络操作系统的安装及设置.mp4
+rename 2.磁盘管理.mp4
+rename 3.域网络的构建和组策略的应用.mp4
+rename 2.域网络的构建和组策略的应用.mp4
+shell 
+delete
+
+open_with wps
