@@ -187,7 +187,7 @@ bindsym $mod+q exec rofi -show run -theme arthur
 bindsym $mod+Print exec deepin-screenshot
 
 exec_always exec guake
-exec_always exec feh --bg-fill $HOME/Pictures/wallpapers/w1.jpg
+exec_always exec feh --bg-fill $HOME/Pictures/wallpapers/blue.png
 #exec_always exec feh --randomize --bg-fill $HOME/Pictures/wallpapers
 new_window none
 gaps inner 6
