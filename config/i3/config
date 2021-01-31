@@ -187,16 +187,28 @@ bindsym $mod+q exec rofi -show run -theme arthur
 bindsym $mod+Print exec deepin-screenshot
 
 exec_always exec guake
-exec_always exec feh --bg-fill $HOME/Pictures/wallpapers/blue.png
+exec_always exec feh --bg-fill $HOME/Pictures/wallpapers/w1.jpg
 #exec_always exec feh --randomize --bg-fill $HOME/Pictures/wallpapers
 new_window none
-gaps inner 6
+#gaps inner 6
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#        status_command i3status
-#}
-#
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+bar {
+        status_command i3status
+		position top
+#mode hide
+		font -misc-fixed-medium-r-normal--13-120-75-75-iso10646-1
+		font pango:Ubuntu Mono 11
+
+		colors {
+			background #00000017
+		}
+		
+		i3bar_command i3bar --transparency
+
+}
+bindsym $mod+m bar mode toggle
+
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
