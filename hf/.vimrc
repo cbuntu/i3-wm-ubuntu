@@ -84,6 +84,7 @@
 		filetype plugin indent on
 
 		set autoread
+		autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 		set shortmess=ati
 
 		set nobackup
@@ -150,14 +151,16 @@
 		func! CompileRunGcc()
 			exec "w"
 			if &filetype == 'c'
-				exec "!gcc % -o %<"
-				exec "!./%<"
+				exec "!g++ % -o %<"
+				exec "! ./%<"
 			elseif &filetype == 'cpp'
 				exec "!g++ % -o %<"
-				exec "!./%<"
+				exec "! ./%<"
 			elseif &filetype == 'java' 
 				exec "!javac %" 
 				exec "!time java %<"
+			elseif &filetype == 'javascript'
+				exec "!node %"
 			elseif &filetype == 'sh'
 				:!time bash %
 			elseif &filetype == 'python'
@@ -174,7 +177,47 @@
 		endfunc
 
 	" }
-
+	
+	" New File {
+		"map <F6> :call SetTitle()<CR>
+		" New File .c, .h, .sh, .java for insert Title
+		autocmd BufNewFile *.[ch],*.cpp,*.sh,*.java exec ":call SetTitle()"
+		" Define the SetTitle function
+		func! SetTitle()
+			if &filetype == 'sh'
+				call setline(1, "######################################################")
+				call append(line("."), "\# File Name: ".expand("%"))
+				call append(line(".")+1, "\# Author: Cbuntu")
+				call append(line(".")+2, "\# Mail: cbuntu@126.com")
+				call append(line(".")+3, "\# Create Time: ".strftime("%c"))
+				call append(line(".")+4, "######################################################")
+				call append(line(".")+5, "\#!/bin/bash")
+				call append(line(".")+6, "")
+			else
+				call setline(1, "/*****************************************************")
+				call append(line("."), "	> File Name: ".expand("%"))
+				call append(line(".")+1, "	> Author: Cbuntu")
+				call append(line(".")+2, "	> Mail: cbuntu@126.com")
+				call append(line(".")+3, "	> Create Time: ".strftime("%c"))
+				call append(line(".")+4, "*****************************************************/")
+				call append(line(".")+5, "")
+			endif
+			if &filetype == 'cpp'
+				call append(line(".")+6, "#include <iostream>")
+				call append(line(".")+7, "using namespace std;")
+				call append(line(".")+8, "")
+			endif
+			if &filetype == 'c'
+				call append(line(".")+6, "#include <stdio.h>")
+				call append(line(".")+7, "")
+			endif
+			if &filetype == 'java'
+				call append(line(".")+6, "public class".expand("%"))
+				call append(line(".")+7, "")
+			endif
+			autocmd BufNewFile * normal G
+		endfunc
+	" }
 
 	" NERDTree {
 	
