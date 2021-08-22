@@ -187,7 +187,7 @@ bindsym $mod+q exec rofi -show run -theme arthur
 bindsym $mod+Print exec deepin-screenshot
 
 exec_always exec guake
-exec_always exec feh --bg-fill $HOME/Pictures/wallpapers/w1.jpg
+exec_always exec feh --bg-fill $HOME/.Pictures/wallpapers/w5.jpg
 #exec_always exec feh --randomize --bg-fill $HOME/Pictures/wallpapers
 new_window none
 #gaps inner 6
@@ -196,7 +196,8 @@ new_window none
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+#status_command i3status
+		status_command conky -c $HOME/.config/i3/i3conky/conkyrc
 		position top
 #mode hide
 		font -misc-fixed-medium-r-normal--13-120-75-75-iso10646-1
@@ -206,7 +207,7 @@ bar {
 			background #00000017
 		}
 		
-		i3bar_command i3bar --transparency
+#i3bar_command i3bar --transparency
 
 }
 bindsym $mod+m bar mode toggle
