@@ -39,6 +39,6 @@ conky.text = [[
  ${time %H:%M} \
  ${time %a %b %d} \
 ${execi 1 amixer | grep -A10 'Master' | sed -rn 's/.*\[([0-9]+%)\].*\[(on|off)\]/\2 \1/p' | sed -n '1p' | sed 's/off.*/ /' | sed -r 's/on( [01234]?[0-9]%)/\1/' | sed -r 's/(on|) 0%/ 0%/' | sed -r 's/on//'} \
- ${battery_percent}% \
- $nodename
+ ${battery_percent}% \
+ ${exec whoami}  $nodename
 ]]
